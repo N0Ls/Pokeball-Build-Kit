@@ -53,20 +53,16 @@ export default class Pokeball
         this.animation = {};
         this.animation.mixer = new THREE.AnimationMixer(this.model);
         this.animation.action = this.animation.mixer.clipAction(this.resource.animations[7]);
-        this.animation.action.play();
 
         this.animation.actions = {};
-        
-        this.animation.actions.idle = this.animation.mixer.clipAction(this.resource.animations[7]);
-        this.animation.actions.open = this.animation.mixer.clipAction(this.resource.animations[8]);
-        this.animation.actions.idle.setLoop(THREE.LoopOnce);
-        this.animation.actions.open.setLoop(THREE.LoopOnce);
-        this.animation.actions.idle.clampWhenFinished = true;
-        this.animation.actions.open.clampWhenFinished = true;
 
+        //for each animation in the resource.animations array, create a new action
 
-        this.animation.actions.current = this.animation.actions.idle;
-        this.animation.actions.current.play();
+        for(let i = 0; i < this.resource.animations.length; i++){
+            this.animation.actions[this.resource.animations[i].name] = this.animation.mixer.clipAction(this.resource.animations[i]);
+            this.animation.actions[this.resource.animations[i].name].setLoop(THREE.LoopOnce);
+            this.animation.actions[this.resource.animations[i].name].clampWhenFinished = true;
+        }
 
         this.animation.play = (name) =>
         {
@@ -80,22 +76,12 @@ export default class Pokeball
             this.animation.actions.current = newAction;
         };
 
-
-        console.log(this.animation.actions);
-        console.log(this.resource.animations);
-
-        // // Debug
-        // if(this.debug.active)
-        // {
-        //     const debugObject = {
-        //         playIdle: () => { this.animation.play("idle"); },
-        //         playWalking: () => { this.animation.play("walking"); },
-        //         playRunning: () => { this.animation.play("running"); }
-        //     };
-        //     this.debugFolder.add(debugObject, "playIdle");
-        //     this.debugFolder.add(debugObject, "playWalking");
-        //     this.debugFolder.add(debugObject, "playRunning");
-        // }
+        this.animation.mixer.addEventListener("finished", (e) =>
+        {
+            if(e.action.timeScale > 0){
+                e.action.timeScale = -1;
+            }
+        });
     }
 
     setModel()
@@ -104,8 +90,6 @@ export default class Pokeball
         this.model.scale.set(0.5, 0.5, 0.5);
         this.model.rotation.y = Math.PI;
         this.scene.add(this.model);
-
-        console.log(this.resource.animations);
     }
 
     update()
