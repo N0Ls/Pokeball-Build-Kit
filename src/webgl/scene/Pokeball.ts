@@ -86,6 +86,7 @@ export default class Pokeball
             if(e.action.timeScale > 0){
                 e.action.timeScale = -1;
             }
+            this.checkPuzzleStatus();
         });
     }
 
@@ -180,6 +181,19 @@ export default class Pokeball
         }
 
         return true;
+    }
+
+    checkPuzzleStatus(): number{
+        let nbDone = 0;
+        for (const action in this.animation.actionsDone) {
+            if(this.animation.actionsDone[action] === true){
+                nbDone ++;
+            }
+        }
+
+        var size = Object.keys(this.animation.actionsDone).length;
+        console.log(nbDone / size);
+        return nbDone / this.animation.actionsDone.length;
     }
 
     update()
