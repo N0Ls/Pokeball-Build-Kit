@@ -49,7 +49,7 @@ export default class World {
             this.raycaster.setFromCamera(mouse, this.experience.camera.instance);
             const modelIntersects = this.raycaster.intersectObject(this.scene);
             
-            if(this.pokeball) this.pokeball.playAnimation(modelIntersects[0].object.name + "Action");
+            if(this.pokeball && modelIntersects.length > 0) this.pokeball.playAnimation(modelIntersects[0].object.name + "Action");
             
         });
     }

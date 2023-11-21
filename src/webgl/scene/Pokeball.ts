@@ -83,13 +83,11 @@ export default class Pokeball
             if(e.action.timeScale > 0){
                 e.action.timeScale = -1;
             }
-            // console.log(this.animation.actions);
         });
     }
 
     playAnimation(name:string){
         this.animation.actions[name].paused = false;
-        console.log(this.animation.actions[name]);
         // this.animation.play(name);
     }
 
