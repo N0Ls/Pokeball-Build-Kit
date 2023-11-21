@@ -52,7 +52,7 @@ export default class Pokeball
     {
         this.animation = {};
         this.animation.mixer = new THREE.AnimationMixer(this.model);
-        this.animation.action = this.animation.mixer.clipAction(this.resource.animations[7]);
+        // this.animation.action = this.animation.mixer.clipAction(this.resource.animations[7]);
 
         this.animation.actions = {};
 
@@ -62,6 +62,8 @@ export default class Pokeball
             this.animation.actions[this.resource.animations[i].name] = this.animation.mixer.clipAction(this.resource.animations[i]);
             this.animation.actions[this.resource.animations[i].name].setLoop(THREE.LoopOnce);
             this.animation.actions[this.resource.animations[i].name].clampWhenFinished = true;
+
+            this.animation.actions[this.resource.animations[i].name].play();
         }
 
         this.animation.play = (name) =>
@@ -81,7 +83,14 @@ export default class Pokeball
             if(e.action.timeScale > 0){
                 e.action.timeScale = -1;
             }
+            // console.log(this.animation.actions);
         });
+    }
+
+    playAnimation(name:string){
+        this.animation.actions[name].paused = false;
+        console.log(this.animation.actions[name]);
+        // this.animation.play(name);
     }
 
     setModel()
