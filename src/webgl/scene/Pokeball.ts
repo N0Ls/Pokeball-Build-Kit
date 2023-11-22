@@ -88,6 +88,9 @@ export default class Pokeball
             }
             this.checkPuzzleStatus();
         });
+
+        // play animation for belt
+        this.animation.actionsDone["BeltAction"] = true;
     }
 
     playNopeAnimation(name: string){
