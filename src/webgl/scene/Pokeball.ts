@@ -84,9 +84,13 @@ export default class Pokeball
         this.animation.mixer.addEventListener("finished", (e) =>
         {
             if(e.action.timeScale > 0){
-                e.action.timeScale = -1;
+                e.action.timeScale = -1.5;
             }
-            this.checkPuzzleStatus();
+            const status = this.checkPuzzleStatus();
+            if(status === 1){
+                console.log(this.experience.time.elapsed);
+                console.log("puzzle done");
+            }
         });
 
         // play animation for belt
@@ -195,8 +199,7 @@ export default class Pokeball
         }
 
         var size = Object.keys(this.animation.actionsDone).length;
-        console.log(nbDone / size);
-        return nbDone / this.animation.actionsDone.length;
+        return nbDone / size;
     }
 
     update()
