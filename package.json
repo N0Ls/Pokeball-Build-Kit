@@ -1,24 +1,26 @@
 {
-  "name": "three-js-starter",
+  "name": "pokeball-build-kit-puzzle",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
     "@vitejs/plugin-basic-ssl": "^1.0.1",
     "eslint": "^8.49.0",
+    "gh-pages": "^6.1.0",
     "stats-gl": "^1.0.5",
     "typescript": "^5.2.2",
     "vite": "^4.4.9"
   },
   "dependencies": {
     "@types/three": "^0.156.0",
-    "gh-pages": "^6.1.0",
     "howler": "^2.2.3",
     "lil-gui": "^0.18.2",
     "three": "^0.156.1",
