@@ -155,6 +155,8 @@ body
   
   .welcome-text {
     margin-bottom: 25px;
+    width: 75%;
+    margin: 0 auto 25px auto;
   }
   
   .welcome-div {
@@ -178,6 +180,7 @@ body
     text-align: center;
     color: white;
     text-transform: uppercase;
+    margin-bottom: 25px;
   }
   
   h2 {
