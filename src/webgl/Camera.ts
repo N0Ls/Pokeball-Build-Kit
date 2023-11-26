@@ -27,8 +27,8 @@ export default class Camera
 
     setInstance()
     {
-        this.instance = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.01, 1000);
-        this.instance.position.set(6, 4, 8);
+        this.instance = new THREE.PerspectiveCamera(45, this.sizes.width / this.sizes.height, 0.01, 1000);
+        this.instance.position.set(0.11, 0.06, 0.26);
 
         /* ORTHOGRAPHIC CAMERA */
         // this.instance = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 5 );
