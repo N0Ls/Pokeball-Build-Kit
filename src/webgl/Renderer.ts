@@ -28,7 +28,7 @@ export default class Renderer {
         this.instance.outputColorSpace = THREE.SRGBColorSpace;
         this.instance.setSize(this.sizes.width, this.sizes.height);
         this.instance.setPixelRatio(this.sizes.pixelRatio);
-        this.instance.setClearColor(0x000000, 1);
+        this.instance.setClearColor(0x000000, 0);
         // this.instance.gammaOutput = true;
         // this.instance.gammaFactor = 2.2;
         this.instance.outputColorSpace = THREE.SRGBColorSpace;
