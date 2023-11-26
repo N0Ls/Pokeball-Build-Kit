@@ -85,6 +85,7 @@ export default class Experience {
         this.startButton = document.querySelector(".startButton") as HTMLElement;
 
         this.startButton?.addEventListener("click", () => {
+            if(this.hasEnteredExperience) return;
             const loaderHTML = document.querySelector(".loader") as HTMLElement;
             loaderHTML.style.opacity = "0";
 

@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import Experience from "../Experience.js";
+import gsap from "gsap";
 
 export default class Pokeball
 {
@@ -103,21 +104,35 @@ export default class Pokeball
         for (const action in this.animation.actions) {
             this.animation.actions[action].paused = false;
         }
+
     }
 
     playNopeAnimation(name: string){
-
+        //find object in model
+        const object = this.model.getObjectByName(name) as THREE.Mesh;
+        // gsap animation
+        gsap.to(object?.rotation, {
+            duration: 0.1,
+            x : Math.PI * 0.05,
+            y: Math.PI * 0.05,
+            yoyo: true,
+            repeat: 3,
+            onComplete: () => {
+                object.rotation.set(0, 0, 0);
+            }
+        });
     }
 
     playAnimation(name:string){
-        if(this.animation.actionsDone[name] === true) return;
-        const isAllowed = this.puzzleSolving(name);
+        const actionName = name + "Action";
+        if(this.animation.actionsDone[actionName] === true) return;
+        const isAllowed = this.puzzleSolving(actionName);
         if(!isAllowed){
-            // console.log("nope");
+            this.playNopeAnimation(name);
             return;
         }
-        this.animation.actions[name].paused = false;
-        this.animation.actionsDone[name] = true;
+        this.animation.actions[actionName].paused = false;
+        this.animation.actionsDone[actionName] = true;
         // this.animation.play(name);
     }
 
