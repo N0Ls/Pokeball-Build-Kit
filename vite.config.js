@@ -13,9 +13,10 @@ export default {
         open: !isCodeSandbox, // Open if it's not a CodeSandbox
         port: 3000,
         https: true,
+        strictPort: true,
         hmr: {
-            host: "yourdomainname.com",
-            port: 3001,
+            host: "localhost",
+            port: 3000,
             protocol: "wss",
         },
     },
