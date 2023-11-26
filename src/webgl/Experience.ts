@@ -90,7 +90,8 @@ export default class Experience {
 
             setTimeout(() => {
                 this.hasEnteredExperience = true;
-            }, 1000);
+                this.world.playOpenAnimation();
+            }, 1200);
         });
 
         this.resources.on("ready", () => {

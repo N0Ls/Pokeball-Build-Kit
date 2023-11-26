@@ -54,6 +54,10 @@ export default class World {
         });
     }
 
+    playOpenAnimation() {
+        this.pokeball.playOpenAnimation();
+    }
+
     init() {
         this.pokeball.init();
     }

@@ -64,6 +64,7 @@ export default class Pokeball
             this.animation.actions[this.resource.animations[i].name] = this.animation.mixer.clipAction(this.resource.animations[i]);
             this.animation.actions[this.resource.animations[i].name].setLoop(THREE.LoopOnce);
             this.animation.actions[this.resource.animations[i].name].clampWhenFinished = true;
+            this.animation.actions[this.resource.animations[i].name].paused = true;
 
             this.animation.actions[this.resource.animations[i].name].play();
             this.animation.actionsDone[this.resource.animations[i].name] = false;
@@ -95,6 +96,13 @@ export default class Pokeball
 
         // play animation for belt
         this.animation.actionsDone["BeltAction"] = true;
+    }
+
+    playOpenAnimation() {
+        // iterate through all actions and unpause them
+        for (const action in this.animation.actions) {
+            this.animation.actions[action].paused = false;
+        }
     }
 
     playNopeAnimation(name: string){
