@@ -17,6 +17,10 @@ import AudioEngine from "./AudioEngine.js";
 export default class Experience {
     instance: Experience | null;
     static instance;
+    welcomeDiv: HTMLElement;
+    startButton: HTMLElement;
+    hasEnteredExperience: boolean;
+    
 
     static getInstance () {
         if (!Experience.instance) {
@@ -68,11 +72,37 @@ export default class Experience {
 
         this.resources = new Resources(sources);
 
+        this.hasEnteredExperience = false;
+
         //this.audioEngine = new AudioEngine();
 
         this.world = new World();
 
         this.init();
+
+
+        this.welcomeDiv = document.querySelector(".welcome-div") as HTMLElement;
+        this.startButton = document.querySelector(".startButton") as HTMLElement;
+
+        this.startButton?.addEventListener("click", () => {
+            const loaderHTML = document.querySelector(".loader") as HTMLElement;
+            loaderHTML.style.opacity = "0";
+
+            setTimeout(() => {
+                this.hasEnteredExperience = true;
+            }, 1000);
+        });
+
+        this.resources.on("ready", () => {
+            // Add fake time
+            setTimeout(() => {
+                const svgLoader = document.querySelector(".svg-loader") as HTMLElement;
+                svgLoader.style.opacity = "0";
+                this.welcomeDiv.style.opacity = "1";
+                this.startButton.style.opacity = "1";
+            }, 1300);
+
+        }); 
 
         // Resize event
         this.sizes.on("resize", () => {
