@@ -194,4 +194,62 @@ body
     color: white;
     margin-bottom: 10px;
   }
+
+  .chrono{
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    appearance: button;
+    background-color: #212121;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: din-round, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 25px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0) translateX(-50%);;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: all;
+    z-index: 20;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .chrono:after {
+    background-clip: padding-box;
+    background-color: #484848;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+  .time{
+    margin: 0;
+  }
   

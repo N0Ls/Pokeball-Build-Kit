@@ -29,6 +29,7 @@ export default class Pokeball
     }
 
     init(){
+        this.experience.time.startChrono();
         this.setModel();
         this.setAnimation( );
         // this.setMaterial();
@@ -90,7 +91,8 @@ export default class Pokeball
             }
             const status = this.checkPuzzleStatus();
             if(status === 1){
-                console.log(this.experience.time.elapsed);
+                // console.log(this.experience.time.elapsed);
+                this.experience.isPlaying = false;
                 console.log("puzzle done");
             }
         });

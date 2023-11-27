@@ -20,6 +20,7 @@ export default class Experience {
     welcomeDiv: HTMLElement;
     startButton: HTMLElement;
     hasEnteredExperience: boolean;
+    chronoText: HTMLElement;
     
 
     static getInstance () {
@@ -47,6 +48,8 @@ export default class Experience {
 
     // postProcessing: PostProcessing;
 
+    isPlaying: boolean;
+
     constructor() {
         // Singleton
         if (Experience.instance) {
@@ -57,7 +60,7 @@ export default class Experience {
         // @ts-ignore
         window.experience = this;
 
-        this.isDebug = true;
+        this.isDebug = false;
 
         // Variables
         const canvas = document.querySelector("canvas");
@@ -80,6 +83,8 @@ export default class Experience {
 
         this.init();
 
+        this.chronoText = document.querySelector(".time") as HTMLElement;
+        const chronoDiv = document.querySelector(".chrono") as HTMLElement;
 
         this.welcomeDiv = document.querySelector(".welcome-div") as HTMLElement;
         this.startButton = document.querySelector(".startButton") as HTMLElement;
@@ -88,6 +93,7 @@ export default class Experience {
             if(this.hasEnteredExperience) return;
             const loaderHTML = document.querySelector(".loader") as HTMLElement;
             loaderHTML.style.opacity = "0";
+            chronoDiv.style.opacity = "1";
 
             setTimeout(() => {
                 this.hasEnteredExperience = true;
@@ -113,8 +119,26 @@ export default class Experience {
 
         // Time tick event
         this.time.on("tick", () => {
+            if(this.isPlaying) this.updateChronoText();
             this.update();
         });
+    }
+
+    updateChronoText() {
+        const currentTime = this.time.currentTimeChrono;
+        //convert milliseconds to minutes and seconds
+
+        const minutes = Math.floor(currentTime / 60000);
+        const seconds = Math.floor((currentTime % 60000) / 1000);
+        const milliseconds = Math.floor((currentTime % 1000) / 10);
+
+        //convert to string
+        const finalMinutes = minutes < 10 ? "0" + minutes.toString() : minutes.toString();
+        const finalSeconds = seconds < 10 ? "0" + seconds.toString() : seconds.toString();
+        const finalMilliseconds = milliseconds < 10 ? "0" + milliseconds.toString() : milliseconds.toString();
+
+
+        this.chronoText.innerHTML = finalMinutes + ":" + finalSeconds + ":" + finalMilliseconds;
     }
 
     resize() {
@@ -131,6 +155,7 @@ export default class Experience {
     }
 
     init() {
+        this.isPlaying = true;
         if(this.isDebug) {
             this.initGUI();
             this.initStats();

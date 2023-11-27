@@ -6,6 +6,9 @@ export default class Time extends EventEmitter
     current: number;
     elapsed: number;
     delta: number;
+    startTimeChrono: number;
+    currentTimeChrono: number;
+
     
     constructor()
     {
@@ -23,12 +26,18 @@ export default class Time extends EventEmitter
         });
     }
 
+    startChrono()
+    {
+        this.startTimeChrono = Date.now();
+    }
+
     tick()
     {
         const currentTime = Date.now();
         this.delta = currentTime - this.current;
         this.current = currentTime;
         this.elapsed = this.current - this.start;
+        this.currentTimeChrono = currentTime - this.startTimeChrono;
 
         this.trigger("tick");
 
