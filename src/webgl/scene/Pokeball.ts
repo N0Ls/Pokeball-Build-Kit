@@ -13,7 +13,7 @@ export default class Pokeball
     gui: any;
 
     model: THREE.Object3D;
-    material : THREE.MeshStandardMaterial;
+    glassMaterial : THREE.MeshPhysicalMaterial;
     animation;
     time : any;
     constructor()
@@ -32,7 +32,7 @@ export default class Pokeball
         this.experience.time.startChrono();
         this.setModel();
         this.setAnimation( );
-        // this.setMaterial();
+        this.setMaterial();
         this.setGUI();
     }
 
@@ -41,11 +41,21 @@ export default class Pokeball
     }
 
     setMaterial(){
-        this.material = new THREE.MeshStandardMaterial({
-            color : 0xFF0000
+        this.glassMaterial = new THREE.MeshPhysicalMaterial({
+            transmission: 0.99,
+            transparent: true,
+            ior: 1.5,
+            color: 0x70c8ff,
+            thickness: 0.002,
+            metalness: 0,
+            roughness: 0,
         });
+
         this.model.traverse((child) => {
-            child.material = this.material;
+            if(child instanceof THREE.Mesh && child.material.name === "PlasticBlue"){
+                child.material = this.glassMaterial;
+            }
+
         });
 
     }
