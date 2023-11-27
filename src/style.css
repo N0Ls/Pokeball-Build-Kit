@@ -17,6 +17,9 @@ body
     left: 0;
     outline: none;
     width: 100%;
+    background: -webkit-radial-gradient(center, #ff7676 0%, #af0000 100%);
+    background: -moz-radial-gradient(center, #ff7676 0%, #af0000 100%);
+    background: radial-gradient(circle at center, #ff7676 0%,#af0000 100%);
 }
 
 .loader {
