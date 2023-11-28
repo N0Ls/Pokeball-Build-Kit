@@ -46,6 +46,7 @@ export default class World {
 
         this.experience.canvas?.addEventListener("click", () =>
         {
+            if(!this.experience.isPlaying) return;
             this.raycaster.setFromCamera(mouse, this.experience.camera.instance);
             const modelIntersects = this.raycaster.intersectObject(this.scene);
             

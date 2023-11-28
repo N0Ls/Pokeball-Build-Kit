@@ -99,6 +99,13 @@ export default class Experience {
                 this.hasEnteredExperience = true;
                 this.world.playOpenAnimation();
             }, 1200);
+
+            setTimeout(() => {
+                this.welcomeDiv.style.display = "none";
+                this.startButton.style.display = "none";
+                this.time.startChrono();
+                this.isPlaying = true;
+            }, 2000);
         });
 
         this.resources.on("ready", () => {
@@ -141,6 +148,22 @@ export default class Experience {
         this.chronoText.innerHTML = finalMinutes + ":" + finalSeconds + ":" + finalMilliseconds;
     }
 
+    endPuzzle() {
+        const endScreenDiv = document.querySelector(".endScreen") as HTMLElement;
+        endScreenDiv.style.display = "flex";
+        endScreenDiv.style.opacity = "1";
+        endScreenDiv.style.pointerEvents = "all";
+
+        const chronoDiv = document.querySelector(".chrono") as HTMLElement;
+        chronoDiv.style.bottom = "250px";
+
+        const restartButton = document.querySelector(".restartButton") as HTMLElement;
+        restartButton.style.opacity = "1";
+        restartButton.addEventListener("click", () => {
+            window.location.reload();
+        });
+    }
+
     resize() {
         this.camera.resize();
         this.renderer.resize();
@@ -155,7 +178,6 @@ export default class Experience {
     }
 
     init() {
-        this.isPlaying = true;
         if(this.isDebug) {
             this.initGUI();
             this.initStats();

@@ -103,7 +103,10 @@ export default class Pokeball
             if(status === 1){
                 // console.log(this.experience.time.elapsed);
                 this.experience.isPlaying = false;
-                console.log("puzzle done");
+
+                setTimeout(() => {
+                    this.experience.endPuzzle();
+                }, 1200);
             }
         });
 
