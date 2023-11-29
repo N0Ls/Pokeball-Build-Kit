@@ -17,3 +17,8 @@ npm run dev
 # Build for production in the dist/ directory
 npm run build
 ```
+
+## Additional Credits
+Music by [moodmode](https://pixabay.com/users/moodmode-33139253/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=138828) from [Pixabay](https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=138828)
+
+Sound Effect from [Pixabay](https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=47985)
