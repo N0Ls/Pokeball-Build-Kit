@@ -105,7 +105,7 @@ export default class Experience {
                 this.startButton.style.display = "none";
                 this.time.startChrono();
                 this.isPlaying = true;
-            }, 2000);
+            }, 3500);
         });
 
         this.resources.on("ready", () => {
