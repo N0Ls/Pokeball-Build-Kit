@@ -10,6 +10,16 @@ export default [
         path: "./models/pokeball/Pokeball.glb"
     },
     {
+        name: "ambientSound",
+        type: "audio",
+        path: "./sounds/8-bit-arcade.mp3"
+    },
+    {
+        name: "wrongSound",
+        type: "audio",
+        path: "./sounds/wrong.mp3"
+    },
+    {
         name: "environmentMapTexture",
         type: "cubeTexture",
         path:

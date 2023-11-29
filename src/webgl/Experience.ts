@@ -77,7 +77,7 @@ export default class Experience {
 
         this.hasEnteredExperience = false;
 
-        //this.audioEngine = new AudioEngine();
+        this.audioEngine = new AudioEngine();
 
         this.world = new World();
 
@@ -133,13 +133,11 @@ export default class Experience {
 
     updateChronoText() {
         const currentTime = this.time.currentTimeChrono;
-        //convert milliseconds to minutes and seconds
 
         const minutes = Math.floor(currentTime / 60000);
         const seconds = Math.floor((currentTime % 60000) / 1000);
         const milliseconds = Math.floor((currentTime % 1000) / 10);
 
-        //convert to string
         const finalMinutes = minutes < 10 ? "0" + minutes.toString() : minutes.toString();
         const finalSeconds = seconds < 10 ? "0" + seconds.toString() : seconds.toString();
         const finalMilliseconds = milliseconds < 10 ? "0" + milliseconds.toString() : milliseconds.toString();
@@ -167,14 +165,12 @@ export default class Experience {
     resize() {
         this.camera.resize();
         this.renderer.resize();
-        //this.postProcessing.resize();
     }
 
     update() {
         this.camera.update();
         this.renderer.update();
         this.world.update();
-        //this.postProcessing.update();
     }
 
     init() {

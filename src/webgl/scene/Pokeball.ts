@@ -85,7 +85,7 @@ export default class Pokeball
         this.animation.play = (name) =>
         {
             const newAction = this.animation.actions[name];
-            const oldAction = this.animation.actions.current;
+            // const oldAction = this.animation.actions.current;
 
             newAction.reset();
             newAction.play();
@@ -124,6 +124,7 @@ export default class Pokeball
 
     playNopeAnimation(name: string){
         //find object in model
+        this.experience.audioEngine.playWrongSound();
         const object = this.model.getObjectByName(name) as THREE.Mesh;
         // gsap animation
         gsap.to(object?.rotation, {
