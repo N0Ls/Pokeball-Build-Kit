@@ -20,6 +20,11 @@ export default [
         path: "./sounds/wrong.mp3"
     },
     {
+        name: "successSound",
+        type: "audio",
+        path: "./sounds/success.mp3"
+    },
+    {
         name: "environmentMapTexture",
         type: "cubeTexture",
         path:

@@ -106,6 +106,7 @@ export default class Pokeball
 
                 setTimeout(() => {
                     this.experience.endPuzzle();
+                    this.experience.audioEngine.playSuccessSound();
                 }, 1200);
             }
         });

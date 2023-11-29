@@ -40,6 +40,13 @@ export default class AudioEngine
         this.wrongSound.play();
     }
 
+    playSuccessSound()
+    {
+        this.sound.stop();
+        this.sound = this.resources.items.successSound;
+        this.sound.play();
+    }
+
     destroy()
     {
         this.sound.stop();
